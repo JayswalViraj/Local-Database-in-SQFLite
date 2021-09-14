@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:sqfliteinflutter/Insert.dart';
+
 import 'package:sqfliteinflutter/dbhelper.dart';
 
 class ReadData extends StatefulWidget {
@@ -31,10 +31,10 @@ class _ReadDataState extends State<ReadData> {
             key: _formkeyedit,
             child: Column(
               children: [
-                FutureBuilder<List<Grocery>>(
-                    future: DatabaseHelper.instance.getGroceries(),
+                FutureBuilder<List<User>>(
+                    future: DatabaseHelper.instance.getUserdata(),
                     builder: (BuildContext context,
-                        AsyncSnapshot<List<Grocery>> snapshot) {
+                        AsyncSnapshot<List<User>> snapshot) {
                       if (!snapshot.hasData) {
                         return Center(child: Text('Loading...'));
                       }
@@ -122,13 +122,13 @@ class _ReadDataState extends State<ReadData> {
                   if(_formkeyedit.currentState!.validate()) {
                     selectedId != null
                         ? await DatabaseHelper.instance.update(
-                      Grocery(id: selectedId,
+                      User(id: selectedId,
                           name: editnameController.text,
                           email: editemailController.text,
                           mob: editmobController.text),
                     )
                         : await DatabaseHelper.instance.add(
-                      Grocery(name: editnameController.text,
+                      User(name: editnameController.text,
                           email: editemailController.text,
                           mob: editmobController.text),
                     );

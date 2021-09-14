@@ -78,7 +78,7 @@ class _InsertState extends State<Insert> {
                 onPressed: () async {
                   if (_formkey.currentState!.validate()) {
                     await DatabaseHelper.instance.add(
-                      Grocery(
+                      User(
                           name: nameController.text,
                           mob: mobileController.text,
                           email: emailController.text),
