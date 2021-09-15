@@ -31,10 +31,10 @@ class _ReadDataState extends State<ReadData> {
             key: _formkeyedit,
             child: Column(
               children: [
-                FutureBuilder<List<User>>(
+                FutureBuilder(
                     future: DatabaseHelper.instance.getUserdata(),
                     builder: (BuildContext context,
-                        AsyncSnapshot<List<User>> snapshot) {
+                        AsyncSnapshot snapshot) {
                       if (!snapshot.hasData) {
                         return Center(child: Text('Loading...'));
                       }
